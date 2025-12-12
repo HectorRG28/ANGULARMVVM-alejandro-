@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ANGULARMVVM": {
+    "angularmvvm": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -30,9 +30,12 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -65,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ANGULARMVVM:build:production"
+              "browserTarget": "angularmvvm:build:production"
             },
             "development": {
-              "browserTarget": "ANGULARMVVM:build:development"
+              "browserTarget": "angularmvvm:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ANGULARMVVM:build"
+            "browserTarget": "angularmvvm:build"
           }
         },
         "test": {
@@ -93,12 +96,18 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "7ac38d5a-491e-4953-93b6-051bb2b9785a"
   }
 }

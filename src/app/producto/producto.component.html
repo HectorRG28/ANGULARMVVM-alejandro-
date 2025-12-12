@@ -1,0 +1,53 @@
+<div>
+  <div *ngIf="loading">
+    <p>Cargando productos...</p>
+  </div>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div *ngIf="!loading">
+    <table class="data-table">
+      <thead>
+      <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Categoría</th>
+          <th scope="col">Operaciones</th>
+      </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let producto of productos; let i = index">
+          <td scope="row">{{ producto.id }}</td>
+          <td>{{ producto.nombre }}</td>
+          <td>${{ producto.precio }}</td>
+          <td>{{ producto.categoria }}</td>
+          <td>
+            <button type="button" aria-label="Borrar producto" (click)="borrar(producto.id)">X</button>
+            <span class="separator" aria-hidden="true"> | | | </span>
+            <button type="button" aria-label="Editar producto" (click)="editar(producto.id)">U</button>
+          </td>
+      </tr>
+      </tbody>
+    </table>
+    <hr>
+    <form [formGroup]="myForm" (ngSubmit)="saveProducto()">
+      <div *ngIf="editing">Editando producto ID: {{ editingId }}</div>
+      <input type="hidden" formControlName="id" />
+      <label for="nombre">Nombre:</label>
+      <input id="nombre" formControlName="nombre" type="text" required />
+
+      <label for="descripcion">Descripción:</label>
+      <input id="descripcion" formControlName="descripcion" type="text" />
+
+      <label for="precio">Precio:</label>
+      <input id="precio" formControlName="precio" type="number" step="0.01" required />
+
+      <button type="submit" [disabled]="myForm.invalid">{{ editing ? 'Actualizar Producto' : 'Crear Producto' }}</button>
+      <button type="button" (click)="agregar()">Nuevo</button>
+    </form>
+  </div>
+</div>
+
+

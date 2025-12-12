@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'ANGULARMVVM'`, () => {
+  it(`should have as title 'angularmvvm'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('ANGULARMVVM');
+    expect(app.title).toEqual('angularmvvm');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('ANGULARMVVM app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('angularmvvm app is running!');
   });
 });
