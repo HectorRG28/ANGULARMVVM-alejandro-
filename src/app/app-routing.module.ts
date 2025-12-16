@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ClienteComponent } from './cliente/cliente.component';
-import { ProductoComponent } from './producto/producto.component';
+import { HomeComponent } from './home/home.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthGuard } from './auth.guard'; // ⬅️ Importa tu Guard
 
 const routes: Routes = [
-  { path: 'clientes', component: ClienteComponent },
-  { path: 'productos', component: ProductoComponent },
-  { path: '', redirectTo: 'clientes', pathMatch: 'full' },
-  { path: '**', redirectTo: 'clientes' }
+  { path: '', component: HomeComponent },
+  { 
+    path: 'dashboard', 
+    component: DashboardComponent, 
+    canActivate: [AuthGuard] // ⬅️ Aplica el Guard aquí
+  },
+  { path: 'login', component: LoginComponent } 
 ];
 
 @NgModule({
